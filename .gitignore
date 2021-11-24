@@ -1,0 +1,5 @@
+.vscode
+.devcontainer
+.env
+mysql/db
+node_modules

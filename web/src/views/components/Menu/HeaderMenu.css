@@ -1,0 +1,6 @@
+.header-menu {
+    display: table;
+    grid-column: 3;
+    grid-row: 2;
+    width: 300px;
+}

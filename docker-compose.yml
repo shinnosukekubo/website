@@ -1,0 +1,28 @@
+version: '3'
+services:
+  web:
+    tty: true
+    build: "./web"
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - mysql 
+      - go
+    volumes: 
+      - ./web:/usr/src
+      - /usr/src/node_modules
+  mysql:
+    build: "./mysql"
+    ports:
+      - "3306:3306"
+    env_file: ./mysql/.env
+    volumes:
+      - ./mysql/initdb.d:/docker-entrypoint-initdb.d
+      - ./mysql/db:/var/lib/mysql 
+  go:
+    build: "./go"
+    tty: true
+    volumes:
+      - ./go/app:/go/src/app
+    ports:
+      - "8888:3000"
